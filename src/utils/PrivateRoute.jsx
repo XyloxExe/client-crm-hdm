@@ -1,15 +1,28 @@
-import { Outlet, Navigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Outlet, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
-const PrivateRoutes = async () => {
-  let auth;
-  try {
-    const response = await axios.get(''); // url vers le serveur 
-    auth = response.data.token;
-  } catch (error) {
-    console.error('Erreur lors de la récupération du token JWT:', error);
+const PrivateRoute = ({ children }) => {
+  const [auth, setAuth] = useState(null);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      try {
+        const response = await axios.get(''); 
+        setAuth(response.data.token || false);
+      } catch (error) {
+        console.error('Erreur lors de la récupération du token JWT:', error);
+        setAuth(false);
+      }
+    };
+    fetchToken();
+  }, []);
+
+  if (auth === null) {
+    return null;
   }
+
   return auth ? <Outlet /> : <Navigate to="/connexion" />;
 };
 
-export default PrivateRoutes;
+export default PrivateRoute;

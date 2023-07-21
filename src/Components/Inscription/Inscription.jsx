@@ -8,6 +8,7 @@ export default function Inscription()
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [emailError, setEmailError] = useState("");
+    const [errors , setErrors] = useState([])
     const navigate = useNavigate();
 
     const validateEmail = (email) => {
@@ -39,7 +40,7 @@ export default function Inscription()
         if (email && password && name && !emailError) {
             navigate("/connexion");
         } else {
-            alert("Veuillez remplir tous les champs pour valider l'inscription.");
+            setErrors("Veuillez remplir tous les champs pour valider l'inscription")
         }
     }
 
@@ -60,6 +61,7 @@ export default function Inscription()
                     <input placeholder="********" type="password" name="password" value={password} onChange={handlePasswordChange} className="inscription-input" />
                
                 <input type="submit" value="cree mon compte" className="inscription-submit" />
+                <p style={{color : "red", fontSize: "15px"}}> {errors.length > 0 && errors  }   </p>
             </form>
         </div>
 
