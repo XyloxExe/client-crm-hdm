@@ -1,0 +1,17 @@
+.NotFound {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+  }
+  
+  .NotFound h1 {
+    font-size: 3em;
+    color: #333;
+  }
+  
+  .NotFound p {
+    font-size: 1.5em;
+    color: #666;
+  }

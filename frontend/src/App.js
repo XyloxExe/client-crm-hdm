@@ -1,11 +1,12 @@
 
 import './App.css';
-
+import NavBar from './Components/Navbar/Navbar';
 function App() {
   return (
-    <div className="App">
-      <h1>frontend</h1>
-    </div>
+ <>
+  <NavBar/>
+ 
+ </>
   );
 }
 
