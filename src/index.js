@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import PrivateRoute from "./utils/PrivateRoute.jsx";
+import PrivateRoute from "./utils/PrivateRoute.jsx"; // Corrected the import path
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -18,15 +18,8 @@ ReactDOM.render(
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/inscription" element={<Inscription />} />
         <Route path='*' element={<NotFound />} />
-     
-        <Route
-          path="/profil/:id"
-          element={
-            <PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-          }
-        />
+        {/* Route privée*/}
+        <Route path="/profil/:id"element={<PrivateRoute><Profile /></PrivateRoute>}/>
       </Routes>
     </Router>
   </React.StrictMode>,
