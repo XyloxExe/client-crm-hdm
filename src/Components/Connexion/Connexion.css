@@ -32,3 +32,19 @@
     margin: 4px 2px;
     cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+    .Connexion{
+        width: 90%;
+        height: auto;
+    }
+
+    .Connexion input{
+        width: 90%;
+    }
+
+    .Connexion button{
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

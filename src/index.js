@@ -18,7 +18,7 @@ ReactDOM.render(
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/inscription" element={<Inscription />} />
         <Route path='*' element={<NotFound />} />
-   
+     
         <Route
           path="/profil/:id"
           element={
