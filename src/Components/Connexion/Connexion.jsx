@@ -49,8 +49,8 @@ export default function Connexion() {
             <form onSubmit={handleSubmit}>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Mot de passe" required />
-                {error && <p>{error}</p>}
                 <button type="submit">Connexion</button>
+                {error && <p style={{color: "red"}}>{error}</p>}
             </form>
         </div>
         </>
