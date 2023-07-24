@@ -13,13 +13,15 @@ export default function Inscription() {
   const [emailError, setEmailError] = useState("");
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
-
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
- 
   
+
+
+ 
+      
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     if (!validateEmail(e.target.value)) {
@@ -36,6 +38,7 @@ export default function Inscription() {
   const handleFirstNameChange = (e) => {
     setFirstName(e.target.value);
   };
+  
 
   const handleLastNameChange = (e) => {
     setLastName(e.target.value);
