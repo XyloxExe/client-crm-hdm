@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import NavBar from "../Navbar/Navbar";
+import Logo from "../images/logo.png"
+import Avatar1 from "../images/avatar1.png"
+import Avatar2 from "../images/avatar2png"
 import "./Inscription.css";
 export default function Inscription() {
   const [email, setEmail] = useState("");
@@ -17,6 +20,9 @@ export default function Inscription() {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
+
+
+  
   
 
 
@@ -59,18 +65,21 @@ export default function Inscription() {
     } else {
       const data = {
         username: name,
-        email: email,
+        mail: email,
         password: password,
-        first_name: firstName,
-        last_name: lastName,
+        firstName: firstName,
+        lastName: lastName, 
         telephone: telephone
       };
-      let url = "https://127.0.0.1:8000/api/users";
+      let url = "https://localhost:8000/api/users";
       try {
         console.log("Sending data to the server:", data);
-        const response = await axios.post(url, data);
-        console.log("Response from the server:", response);
-        if (response.status === 200) {
+        const response = await axios.post(url, data, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });        console.log("Response from the server:", response);
+        if (response.status === 200 ||response.status === 201) {
           navigate("/connexion");
         } else {
           setErrors("Erreur lors de l'enregistrement des données");
@@ -86,7 +95,11 @@ export default function Inscription() {
     <>
       <NavBar />
       <div className="Inscription">
-        <h1 className="inscription-title">Inscription</h1>
+        <div className="inscription-title">
+          <img className="Logo" src={Logo} alt={Logo} srcset="" />
+          <img className="avatar1" src={Avatar1} alt={Avatar1} srcset="" />
+          <img className="avatar2" src={Avatar2} alt={Avatar2} srcset="" />
+        </div>
         <form onSubmit={handleSubmit} className="inscription-form">
           <input
             placeholder="nom"

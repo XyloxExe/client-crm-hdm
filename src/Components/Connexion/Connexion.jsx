@@ -2,58 +2,82 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import NavBar from "../Navbar/Navbar";
-import "./Connexion.css"
+import "./Connexion.css";
+import axios from "axios";
+
 export default function Connexion() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setErrors] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-    const validateEmail = (email) => {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    } 
-        
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        // Vérifier si l'email est valide 
-        if (!validateEmail(email)) {
-            // Si l'email n'est pas valide, définir l'erreur
-            setError("Email non valide");
-        } else if (email !== "" && password !== "") {
-            // Si l'email et le mot de passe sont présents, réinitialiser l'erreur
-            setError("");
-            // Envoyer une requête POST avec l'email et le mot de passe
-            const response = await fetch('', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email, password })
-            });
-            // Attendre la réponse du serveur et la convertir en JSON
-            const data = await response.json();
-            // Si l'utilisateur est présent dans la réponse, rediriger vers son profil
-            if (data.user) {
-                navigate(`/profil/${data.user.id}`);
-            }
+
+
+  const handleSubmit = async (e) => { 
+    e.preventDefault();
+    // Reset error state and set loading to true during the request
+    setErrors("");
+    setLoading(true);
+
+    if (username !== "" && password !== "") {
+      const data = { username: username, password: password };
+      const url = "https://localhost:8000/api/users";
+
+      try {
+        console.log("Sending data to the server:", data);
+        const response = await axios.post(url, data, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        console.log("Response from the server:", response);
+
+        if (response.status === 200 || response.status === 201) {
+          setLoading(false);
+          // Utilisation de response.data.id pour accéder à l'ID dans la réponse
+          navigate(`/profil/${response.data.id}`);
+        } else {
+          setErrors("Erreur lors de l'enregistrement des données");
+          setLoading(false);
         }
+      } catch (error) {
+        console.log("Error:", error);
+        setErrors("Erreur lors de l'enregistrement des données...");
+        setLoading(false);
+      }
+    } else {
+      // Gérer le cas où l'email ou le mot de passe est vide
+      setErrors("Veuillez saisir l'email et le mot de passe.");
+      setLoading(false);
     }
+  };
 
-
-
-    return (
-        <>
-            <NavBar/>
-        <div className="Connexion">
-            <form onSubmit={handleSubmit}>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Mot de passe" required />
-                <button type="submit">Connexion</button>
-                {error && <p style={{color: "red"}}>{error}</p>}
-            </form>
-        </div>
-        </>
-    )
+  return (
+    <>
+      <NavBar />
+      <div className="Connexion">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="username"
+            required
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Mot de passe"
+            required
+          />
+          <button type="submit" disabled={loading}>
+            {loading ? "Connexion en cours..." : "Connexion"}
+          </button>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+        </form>
+      </div>
+    </>
+  );
 }
-
