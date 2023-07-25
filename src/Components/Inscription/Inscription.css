@@ -1,14 +1,12 @@
 .Inscription {
-    width: 90%;
-    height: 40rem;
+    width: 100%;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    margin: 2% auto;
     text-align: center;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     font-size: 1.6em;
-    padding: 20px;
+    background-color: #fff;
 }
 
 .inscription-title {
@@ -22,11 +20,16 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    width: 10%;
+    width: 140px;
+    height: 118px
 }
 
 .inscription-title>.avatar1,
-.inscription-title>.avatar2 {
+.inscription-title>.avatar2,
+.inscription-title>.avatar3,
+.inscription-title>.avatar4,
+.inscription-title>.avatar5,
+.inscription-title>.avatar6 {
     position: absolute;
     border-radius: 50%;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -35,43 +38,111 @@
 .inscription-title>.avatar1 {
     width: 132px;
     height: 132px;
-    top: 50%;
-    left: 20%;
+    top: 29%;
+    left: 80%;
     transform: translate(-50%, -50%);
 }
 
 .inscription-title>.avatar2 {
+    width: 233px;
+    height: 233px;
+    z-index: 2;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    border-radius: 116.5px;
+}
+
+.inscription-title>.avatar3 {
     width: 132px;
     height: 132px;
-    top: 50%;
-    right: 20%;
-    transform: translate(50%, -50%);
+    top: 80%;
+    left: 19%;
+    transform: translate(-50%, -50%);
+}
+
+.inscription-title>.avatar4 {
+    width: 72px;
+    height: 72px;
+    top: 79%;
+    left: 59%;
+    transform: translate(-50%, -50%);
+}
+
+.inscription-title>.avatar5 {
+    width: 72px;
+    height: 72px;
+    top: 20%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+}
+
+.inscription-title>.avatar6 {
+    width: 110px;
+    height: 110px;
+    top: 39%;
+    left: 19%;
+    transform: translate(-50%, -50%);
 }
 
 .inscription-form {
     width: 100%;
+    height: 100%;
     padding: 20px;
 }
 
 .inscription-form>input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 10px 0;
+    width: 90%;
+    padding: 15px;
+    margin: 12px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
+    border: 0.6px solid #130F26;
 }
 
 .inscription-form>input[type="submit"] {
-    border: none;
-    color: white;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-    margin-top: 20px;
-    cursor: pointer;
+    display: flex;
+    width: 225px;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 2% auto;
     border-radius: 12px;
     background: #130F26;
+    color: #fff;
+    cursor: pointer;
+}
+
+.Inscription-header {
+    padding: 10px;
+}
+
+.Inscription-header>P {
+    color: #130F26;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.14px;
+    color: #130F26;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    letter-spacing: -0.14px;
+}
+
+.Inscription-header>h2 {
+    margin: 3%;
+    color: var(--black-l-2, #363939);
+    font-family: Inter;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 130%;
 }
 
 .inscription-label {
@@ -84,4 +155,21 @@
     color: red;
     font-size: 1em;
     margin-top: 5px;
+}
+
+
+/* Media query for big screens */
+
+@media screen and (min-width: 1900px) {
+    .Inscription {
+        font-size: 2em;
+    }
+    .inscription-title>.avatar1 {
+        width: 10%;
+        max-width: 132px;
+    }
+    .inscription-title>.avatar2 {
+        width: 15%;
+        max-width: 233px;
+    }
 }

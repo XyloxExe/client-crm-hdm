@@ -5,6 +5,10 @@ import NavBar from "../Navbar/Navbar";
 import Logo from "../images/logo.png"
 import Avatar1 from "../images/avatar1.png"
 import Avatar2 from "../images/avatar2png"
+import Avatar3 from "../images/avatar3.png"
+import Avatar4 from "../images/avatar4.png"
+import Avatar5 from "../images/avatar5.png"
+import Avatar6 from "../images/avatar6.png"
 import "./Inscription.css";
 export default function Inscription() {
   const [email, setEmail] = useState("");
@@ -93,14 +97,25 @@ export default function Inscription() {
 
   return (
     <>
-      <NavBar />
       <div className="Inscription">
         <div className="inscription-title">
           <img className="Logo" src={Logo} alt={Logo} srcset="" />
           <img className="avatar1" src={Avatar1} alt={Avatar1} srcset="" />
           <img className="avatar2" src={Avatar2} alt={Avatar2} srcset="" />
+          <img className="avatar3" src={Avatar3} alt={Avatar3} srcset="" />
+          <img className="avatar4" src={Avatar4} alt={Avatar4} srcset="" />
+          <img className="avatar5" src={Avatar5} alt={Avatar5} srcset="" />
+          <img className="avatar6" src={Avatar6} alt={Avatar6} srcset="" />
         </div>
         <form onSubmit={handleSubmit} className="inscription-form">
+          <div className="Inscription-header">
+          <h2 className="">Welcome Back!</h2>
+          <p>Ou inscrivez-vous  avec votre email</p>
+          <p style={{ color: "red", fontSize: "15px" }}>
+            {" "}
+            {errors.length > 0 && errors}{" "}
+          </p>
+          </div>
           <input
             placeholder="nom"
             type="text"
@@ -161,10 +176,7 @@ export default function Inscription() {
             value="cree mon compte"
             className="inscription-submit"
           />
-          <p style={{ color: "red", fontSize: "15px" }}>
-            {" "}
-            {errors.length > 0 && errors}{" "}
-          </p>
+        
         </form>
       </div>
     </>
