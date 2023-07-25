@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 import NavBar from "../Navbar/Navbar";
 import Logo from "../images/logo.png"
@@ -109,8 +111,9 @@ export default function Inscription() {
         </div>
         <form onSubmit={handleSubmit} className="inscription-form">
           <div className="Inscription-header">
-          <h2 className="">Welcome Back!</h2>
-          <p>Ou inscrivez-vous  avec votre email</p>
+          <h2 className="">Créer Un compte</h2>
+
+          <p> ou connectez-vous directement <Link to="/connexion">ici</Link></p>
           <p style={{ color: "red", fontSize: "15px" }}>
             {" "}
             {errors.length > 0 && errors}{" "}
