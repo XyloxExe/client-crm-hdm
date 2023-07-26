@@ -173,3 +173,35 @@
         max-width: 233px;
     }
 }
+
+@media screen and (max-width: 575px) {
+    .Inscription {
+        width: auto;
+        height: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        text-align: center;
+        font-size: 1.6em;
+        background: #99DEF0;
+        margin: auto;
+    }
+    .inscription-title {
+        position: relative;
+        width: auto;
+        height: auto;
+        background: #99DEF0;
+    }
+    .inscription-title>.avatar1,
+    .inscription-title>.avatar2,
+    .inscription-title>.avatar3,
+    .inscription-title>.avatar4,
+    .inscription-title>.avatar5,
+    .inscription-title>.avatar6 {
+        display: none;
+    }
+    .inscription-title>.Logo {
+        display: none;
+    }
+}

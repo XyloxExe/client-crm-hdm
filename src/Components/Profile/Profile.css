@@ -30,6 +30,19 @@
     padding-left: 20px;
 }
 
+.profileEditButton {
+    display: inline-flex;
+    width: 144px;
+    padding: 5px 11px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border: 1px solid #000;
+    background: #99DEF0;
+    cursor: pointer;
+}
+
 .Profile-header>p {
     color: #000;
     /* Body/Body/Bold/L */
@@ -174,3 +187,56 @@ input[type="tel"] {
 
 
 /* Other styles */
+
+@media screen and (max-width: 575px) {
+    .Profile {
+        width: 90%;
+        margin: 5%;
+        height: auto;
+    }
+    .Profile-header>h2 {
+        font-size: 1.5em;
+    }
+    .Profile-header>p {
+        font-size: 1em;
+    }
+    .Profile-image {
+        height: auto;
+    }
+    .avatarUser {
+        width: 50px;
+        height: 50px;
+    }
+    .form-profile>input[type="text"],
+    .profileEmailEdit>input[type="email"],
+    .form-profile>input[type="tel"] {
+        width: auto;
+        height: auto;
+    }
+    .profileEmailEdit {
+        flex-direction: column;
+    }
+    .profileEmailbuttonEdit {
+        width: 100%;
+    }
+    .image-input {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .image-input label {
+        width: 100%;
+    }
+    .Profile-main {
+        width: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    .form-profile {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+    }
+}
