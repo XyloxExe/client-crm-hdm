@@ -27,7 +27,7 @@ export default function Connexion() {
 
       const userId = response.data.id;
       console.log("User ID:", userId);
-      navigate(`/profil/${userId}`);
+      navigate(`/profile/${userId}`);
     } catch (error) {
       console.log("Error fetching user ID:", error);
     }

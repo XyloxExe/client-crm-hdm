@@ -18,9 +18,11 @@ ReactDOM.render(
         <Route path="/connexion" element={<Connexion />} />
         <Route path="/inscription" element={<Inscription />} />
         <Route path='*' element={<NotFound />} />
-        {/* Route privée*/}
-        <Route path="/profile/:id"element={<PrivateRoute><Profile /></PrivateRoute>}/>
-      </Routes>
+     
+        <Route element={<PrivateRoute />}>
+      <Route path="/profile/:id" element={<Profile />} />
+</Route>      
+</Routes>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
