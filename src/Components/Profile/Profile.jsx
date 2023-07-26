@@ -7,7 +7,10 @@ import NavBar from "../Navbar/Navbar";
 
 export default function Profile() {
   const { id } = useParams();
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState({});
+  const [lastName, setLastName] = useState("");
+  const [username, setUsername] = useState("");
+  const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
 
@@ -18,6 +21,9 @@ export default function Profile() {
         const response = await axios.get(url);
         setUserData(response.data);
         setEmail(response.data.mail);
+        setLastName(response.data.lastName);
+        setUsername(response.data.username);
+        setTelephone(response.data.telephone);
       } catch (error) {
         console.error("Erreur lors de la récupération des données utilisateur :", error);
       }
@@ -29,9 +35,15 @@ export default function Profile() {
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     try {
-      const url = `https://localhost:8000/api/user/${id}`;
-      const response = await axios.put(url, { mail: email });
-      setUserData((prevData) => ({ ...prevData, mail: response.data.mail }));
+      const url = `https://localhost:8000/api/users/${id}`;
+      const data = {
+        username: username,
+        mail: email,
+        lastName: lastName,
+        telephone: telephone
+      };
+      const response = await axios.put(url, data);
+      setUserData((prevData) => ({ ...prevData, ...response.data }));
       setIsEditMode(false);
     } catch (error) {
       console.error("Erreur lors de la mise à jour des données utilisateur :", error);
@@ -50,67 +62,82 @@ export default function Profile() {
         <div className="Profile-main">
           <div className="Profile-image">
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <img src={AvatarUser} className="avatarUser" alt="image-profile" />
+              <img src={userData.avatar || AvatarUser} className="avatarUser" alt="image-profile" />
               <h3>{userData.lastName}</h3>
             </div>
-            <form
-              style={{ display: "flex", flexDirection: "column", gap: "30px" }}
-              method="post"
-            >
-              <div className="image-input">
-                <input type="file" accept="image/*" id="imageInput" />
-                <label htmlFor="imageInput" className="image-button">
-                  <i className="far fa-image"></i> Changer de photo
-                </label>
-              </div>
-            </form>
+            <div className="image-input">
+              <input type="file" accept="image/*" id="imageInput" />
+              <label htmlFor="imageInput" className="image-button">
+                <i className="far fa-image"></i> Changer de photo
+              </label>
+            </div>
           </div>
 
-          <form className="form-profile" onSubmit={handleProfileUpdate}>
-            <input
-              disabled={!isEditMode}
-              type="text"
-              name="prenom"
-              value={userData.lastName}
-              placeholder="Prénom"
-            />
-            <input
-              disabled={!isEditMode}
-              type="text"
-              name="Nom"
-              placeholder="Nom"
-              value={userData.username}
-            />
-            <div className="profileEmailEdit">
+          <form className="form-profile">
+            
+            
               <input
                 disabled={!isEditMode}
-                type="email"
-                name="mail"
-                placeholder={userData.mail}
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                name="prenom"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Prénom"
               />
+            
+            
+         
+              <input
+                disabled={!isEditMode}
+                type="text"
+                name="Nom"
+                placeholder="Nom"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+      
+            <div className="profileEmailEdit">
+              
+               
+                <input
+                  disabled={!isEditMode}
+                  type="email"
+                  name="mail"
+                  placeholder="Enter your email address"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              
               {isEditMode && (
-                <button className="profileEmailbuttonEdit" type="submit">
+                <button className="profileEmailbuttonEdit" onClick={handleProfileUpdate} type="button">
                   Sauvegarder
                 </button>
               )}
             </div>
-            <input
-              disabled={!isEditMode}
-              type="tel"
-              name="numero"
-              value={userData.telephone}
-              placeholder="06********"
-            />
             
-          <div className="profileEditModeToggle">
-            <button className="profileEditButton" onClick={() => setIsEditMode(!isEditMode)}>
-              {isEditMode ? "Annuler" : "Modifier"}
-            </button>
-          </div>
+             
+              <input
+                disabled={!isEditMode}
+                type="tel"
+                name="numero"
+                value={telephone}
+                onChange={(e) => setTelephone(e.target.value)}
+                placeholder="06********"
+              />
+            
+            
+            <div className="profileEditModeToggle">
+              <button
+                className="profileEditButton"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsEditMode(!isEditMode);
+                }}
+              >
+                {isEditMode ? "Annuler" : "Modifier"}
+              </button>
+            </div>
           </form>
-
         </div>
       </div>
     </>
