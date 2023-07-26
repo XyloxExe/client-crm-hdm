@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import NavBar from "../Navbar/Navbar";
@@ -12,6 +12,15 @@ export default function Connexion() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+
+  useEffect(() => {
+    const isAuth = localStorage.getItem("authToken");
+    const userId = localStorage.getItem("userId");
+
+    if (isAuth && userId) {
+      navigate(`/profile/${userId}`);
+    }
+  }, [navigate]);
 
   
   const getUserId = async (token) => {
@@ -27,6 +36,7 @@ export default function Connexion() {
 
       const userId = response.data.id;
       console.log("User ID:", userId);
+      localStorage.setItem("userId", userId);
       navigate(`/profile/${userId}`);
     } catch (error) {
       console.log("Error fetching user ID:", error);

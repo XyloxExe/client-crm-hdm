@@ -1,12 +1,11 @@
-body{
+body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
     box-sizing: border-box;
 }
 
-
-a{
+a {
     list-style: none;
     text-decoration: none;
 }

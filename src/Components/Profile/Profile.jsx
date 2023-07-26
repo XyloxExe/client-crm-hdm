@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-
+import AvatarUser from "../images/avatar7.png"
+import "./Profile.css"
+import NavBar from "../Navbar/Navbar";
 export default function Profile() {
   const { id } = useParams();
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState([]);
+  const [email,setEmail] = useState("")
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -22,21 +25,45 @@ export default function Profile() {
   }, [id]);
 
   return (
-    <div className="Profile">
-      {userData ? (
-        <React.Fragment>
-          <h1>User Profile ID: {id}</h1>
-          <h3>User Role : {userData.roles}</h3>
-          {/* Render the user data */}
-          <p>Name: {userData.username}</p>
-          <p>firstName: {userData.firstName}</p>
-          <p>Email: {userData.mail}</p>
-          <p>telephone: {userData.telephone}</p>
-          {/* Add more user data fields as needed */}
-        </React.Fragment>
-      ) : (
-        <p>Loading...</p>
-      )}
+    <>
+    <NavBar />
+      <div className="Profile">
+      <div className="Profile-header">
+        <h2>Mon Profile</h2>
+        <p>Aide</p>
+      </div>
+
+    <div className="Profile-main">
+      <div className="Profile-image">
+        <h3 style={{textAlign: "center"}}>Votre photo de profil</h3>
+        <div style={{display : "flex",flexDirection : "column"}}>
+        <img src={AvatarUser} className="avatarUser" alt="image-profile" srcset="" />
+        <h3>nom et prenom</h3>
+
+        </div>
+        <form style={{display : "flex",flexDirection : "column", gap : "30px"}}  method="post">
+          <input type="file" name="profile-img"   />
+          <input type="file" name="profile-img"   />
+        </form>
+      </div>
+
+
+    <form className="form-profile" method="post">
+      <input disabled type="text" name="prenom" value={userData.lastName}  placeholder="prenom"  />
+      <input disabled type="text" name="Nom" placeholder="Nom" value={userData.username}  />
+      <div className="profileEmailEdit">
+      <input type="email" name="mail" placeholder={userData.mail} value={email} onChange={(e) => setEmail(e.target.value) } />
+      <button className="profileEmailbuttonEdit" type="submit">Modifier</button>
+      </div>
+      <input disabled type="tel" name="numero" value={userData.telephone} placeholder="06********" />
+    </form>
+
+
+
+
     </div>
+
+      </div>
+    </>
   );
 }

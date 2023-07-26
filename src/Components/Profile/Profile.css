@@ -1,0 +1,106 @@
+.Profile {
+    border: 1px solid black;
+    margin: 1% auto;
+    width: 80%;
+    max-width: 80%;
+    height: auto;
+    padding: 0;
+}
+
+.Profile-header {
+    border: 1px solid black;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Profile-header>h2 {
+    color: #000;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-family: DM Sans;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 20px;
+}
+
+.Profile-header>p {
+    color: #000;
+    /* Body/Body/Bold/L */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%;
+    /* 27px */
+    letter-spacing: -0.18px;
+    padding-right: 20px;
+}
+
+.Profile-main {
+    border: 1px solid red;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.Profile-image {
+    border: 1px solid green;
+    width: 100%;
+    height: 15rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.avatarUser {
+    width: 110px;
+    height: 110px;
+}
+
+.form-profile {
+    padding: 10px;
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-profile>input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    display: flex;
+    width: 511px;
+    height: 20px;
+    padding: 9px 18px;
+    align-items: center;
+    align-content: center;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.profileEmailEdit {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.profileEmailbuttonEdit {
+    display: inline-flex;
+    width: 144px;
+    padding: 5px 11px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border: 1px solid #000;
+    background: #99DEF0;
+    cursor: pointer;
+}

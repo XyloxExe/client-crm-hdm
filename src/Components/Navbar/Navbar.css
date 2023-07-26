@@ -1,38 +1,138 @@
-nav{
+/* Position and sizing of burger button */
+
+.bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 20px;
+    top: 20px;
+    z-index: 9999;
+}
+
+
+/* Color/shape of burger icon bars */
+
+.bm-burger-bars {
+    background: #373a47;
+}
+
+.menu-item {
+    flex: 1;
+}
+
+
+/* Color/shape of burger icon bars on hover*/
+
+.bm-burger-bars-hover {
+    background: #a90000;
+}
+
+
+/* Position and sizing of clickable cross button */
+
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+    background-color: #fff;
+}
+
+
+/* Color/shape of close button cross */
+
+.bm-cross {
+    background: #130f26;
+}
+
+
+/* Sidebar wrapper styles */
+
+.bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+    width: 300px;
+    /* Adjust the width of the sidebar */
+    background: #130f26;
+    overflow: hidden;
+    /* Hide the scrollbars outside the menu */
+}
+
+
+/* General sidebar styles */
+
+.bm-menu {
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+    background: #130f26;
+    overflow-y: auto;
+    /* Enable vertical scrolling */
+    color: #fff;
     width: 100%;
-    height: 3rem;
+}
+
+
+/* Hide vertical scrollbar */
+
+.bm-menu::-webkit-scrollbar {
+    width: 0.5em;
+}
+
+.bm-menu::-webkit-scrollbar-track {
+    background: #130f26;
+}
+
+.bm-menu::-webkit-scrollbar-thumb {
+    background: #130f26;
+}
+
+
+/* Morph shape necessary with bubble or elastic */
+
+.bm-morph-shape {
+    fill: #130f26;
+}
+
+
+/* Wrapper for item list */
+
+.bm-item-list {
+    color: #fff;
+    padding: 0.8em;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    border: 3px solid black;
+    flex-direction: column;
+    align-items: flex-start;
+    color: var(--line, #d9dbe9);
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: DM Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    /* 173.333% */
+    letter-spacing: 0.75px;
+    width: 100%;
 }
 
-nav>h1{
-    font-size: 25px;
+
+/* Individual item */
+
+.bm-item {
+    display: block;
+    padding: 0.5em;
+    flex: 2;
 }
 
-nav> ul,li{
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-    font-size: 25px;
+
+/* Hover effect on individual item */
+
+.bm-item:hover {
+    background-color: #130f26;
+    color: #fff;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-    nav{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
 
-    nav>h1{
-        font-size: 10px;
-    }
+/* Styling of overlay */
 
-    nav> ul,li{
-        padding-left: 15px;
-        font-size: 20px;
-    }
+.bm-overlay {
+    background: #fff;
+    z-index: 9998;
 }
-

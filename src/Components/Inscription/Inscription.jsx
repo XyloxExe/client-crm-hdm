@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -29,7 +29,14 @@ export default function Inscription() {
 
 
   
-  
+  useEffect(() => {
+    const isAuth = localStorage.getItem("authToken");
+    const userId = localStorage.getItem("userId");
+
+    if (isAuth && userId) {
+      navigate(`/profile/${userId}`);
+    }
+  }, [navigate]);
 
 
  
