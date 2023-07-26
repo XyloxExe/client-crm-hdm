@@ -5,6 +5,8 @@
     max-width: 80%;
     height: auto;
     padding: 0;
+    float: right;
+    margin-right: 20px;
 }
 
 .Profile-header {

@@ -10,23 +10,40 @@ export default function NavBar() {
    
 
   
-  return (
-    <Menu>
-      {!token && !userId ?  (
-        <>
-        <Link style={{color : "#fff"}} className="menu-item" to="/">Acceuil</Link>
-        <Link   style={{color : "#fff"}} className="menu-item" to="/connexion">connexion</Link>
-        <Link   style={{color : "#fff"}} className="menu-item" to="/inscription">inscription</Link>
-        </>
-        )
-    : 
-    
-    <>
-    <Link   style={{color : "#fff"}} className="menu-item" to={`/profile/${userId}`}>Mon Profile</Link>
-    <Link   style={{color : "#fff"}} className="menu-item" to="/logout">déconnexion</Link>
-    </>
-    
-    }
-    </Menu>
-  );
+    return(
+      <>
+        <div className="container">
+                
+                <ul className="sidebar">
+                <li><span>HDMHUB</span></li>
+
+                {
+                !token && !userId ? (
+                  <>
+                  <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/"><i className="fa fa-dashboard"></i>Acceuil</Link></li>
+                  <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/connexion"><i className="fa fa-dashboard"></i>connexion</Link></li>
+                  <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/inscription"><i className="fa fa-dashboard"></i>inscription</Link></li>
+                  </>
+                  ) 
+                 : 
+
+                 <>
+                 <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to={`/profile/${userId}`}><i className="fa fa-dashboard"></i>Mon Porfile</Link></li>
+                 <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/logout"><i className="fa fa-dashboard"></i>deconnexion</Link></li>
+                 </>
+
+
+
+                }
+                 
+                 
+                </ul>
+                
+                <div className="content">
+                   
+                </div>
+        </div>
+      </>
+      
+      );
 }

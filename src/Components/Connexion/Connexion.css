@@ -1,4 +1,4 @@
-.Connexion{
+.Connexion {
     border: 3px solid black;
     width: 60rem;
     height: 30rem;
@@ -8,10 +8,10 @@
     margin: 3% auto;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
 }
 
-.Connexion input{
+.Connexion input {
     width: 80%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -20,7 +20,7 @@
     border-radius: 4px;
 }
 
-.Connexion button{
+.Connexion button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -34,16 +34,14 @@
 }
 
 @media screen and (max-width: 600px) {
-    .Connexion{
+    .Connexion {
         width: 90%;
         height: auto;
     }
-
-    .Connexion input{
+    .Connexion input {
         width: 90%;
     }
-
-    .Connexion button{
+    .Connexion button {
         padding: 10px 20px;
         font-size: 14px;
     }

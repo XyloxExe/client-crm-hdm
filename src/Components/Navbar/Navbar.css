@@ -1,138 +1,60 @@
-/* Position and sizing of burger button */
+* {
+    padding: 0;
+    margin: 0;
+}
 
-.bm-burger-button {
+.container {
+    height: 100vh;
+    background-color: #ccc;
     position: fixed;
-    width: 36px;
-    height: 30px;
-    left: 20px;
-    top: 20px;
-    z-index: 9999;
+    top: 0;
 }
 
-
-/* Color/shape of burger icon bars */
-
-.bm-burger-bars {
-    background: #373a47;
-}
-
-.menu-item {
-    flex: 1;
-}
-
-
-/* Color/shape of burger icon bars on hover*/
-
-.bm-burger-bars-hover {
-    background: #a90000;
-}
-
-
-/* Position and sizing of clickable cross button */
-
-.bm-cross-button {
-    height: 24px;
-    width: 24px;
-    background-color: #fff;
-}
-
-
-/* Color/shape of close button cross */
-
-.bm-cross {
-    background: #130f26;
-}
-
-
-/* Sidebar wrapper styles */
-
-.bm-menu-wrap {
+.container .sidebar {
     position: fixed;
-    height: 100%;
-    width: 300px;
-    /* Adjust the width of the sidebar */
-    background: #130f26;
-    overflow: hidden;
-    /* Hide the scrollbars outside the menu */
-}
-
-
-/* General sidebar styles */
-
-.bm-menu {
-    padding: 2.5em 1.5em 0;
-    font-size: 1.15em;
-    background: #130f26;
-    overflow-y: auto;
-    /* Enable vertical scrolling */
+    background: #130F26;
+    height: 100vh;
     color: #fff;
-    width: 100%;
+    width: 207px;
+    z-index: 10;
+    text-align: center;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Hide vertical scrollbar */
-
-.bm-menu::-webkit-scrollbar {
-    width: 0.5em;
+.sidebar li:nth-child(1) {
+    padding: 30px 0px;
 }
 
-.bm-menu::-webkit-scrollbar-track {
-    background: #130f26;
+.sidebar li:hover:nth-child(1) {
+    padding: 30px 0px;
+    background-color: transparent;
+    color: #000;
 }
 
-.bm-menu::-webkit-scrollbar-thumb {
-    background: #130f26;
-}
-
-
-/* Morph shape necessary with bubble or elastic */
-
-.bm-morph-shape {
-    fill: #130f26;
-}
-
-
-/* Wrapper for item list */
-
-.bm-item-list {
-    color: #fff;
-    padding: 0.8em;
+.sidebar li {
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.5s;
+    letter-spacing: 1px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    color: var(--line, #d9dbe9);
-    font-feature-settings: "clig" off, "liga" off;
-    font-family: DM Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    /* 173.333% */
-    letter-spacing: 0.75px;
-    width: 100%;
-}
-
-
-/* Individual item */
-
-.bm-item {
-    display: block;
-    padding: 0.5em;
     flex: 2;
+    gap: 20px;
 }
 
-
-/* Hover effect on individual item */
-
-.bm-item:hover {
-    background-color: #130f26;
-    color: #fff;
-    cursor: pointer;
+.sidebar li span:nth-child(1) {
+    font-size: 20px;
 }
 
+.sidebar li span:nth-child(2) {
+    font-size: 20px;
+}
 
-/* Styling of overlay */
+.sidebar li:hover {
+    background-color: #f2f2f2;
+    padding: 12px;
+}
 
-.bm-overlay {
-    background: #fff;
-    z-index: 9998;
+.container .content {
+    padding-left: 75px;
 }
