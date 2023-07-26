@@ -15,7 +15,7 @@ import "./Inscription.css";
 export default function Inscription() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [telephone, setTelephone] = useState("");
@@ -43,8 +43,8 @@ export default function Inscription() {
     }
   };
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const handleUserNameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const handleFirstNameChange = (e) => {
@@ -66,11 +66,11 @@ export default function Inscription() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (email === "" || password === "" || name === "" || firstName === "" || lastName === "" || telephone === "") {
+    if (email === "" || password === "" || username === "" || firstName === "" || lastName === "" || telephone === "") {
       setErrors("Tous les champs doivent être remplis");
     } else {
       const data = {
-        username: name,
+        username: username,
         mail: email,
         password: password,
         firstName: firstName,
@@ -120,11 +120,11 @@ export default function Inscription() {
           </p>
           </div>
           <input
-            placeholder="nom"
+            placeholder="username"
             type="text"
             name="name"
-            value={name}
-            onChange={handleNameChange}
+            value={username}
+            onChange={handleUserNameChange}
             className="inscription-input"
           />
 

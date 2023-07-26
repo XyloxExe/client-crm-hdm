@@ -72,7 +72,7 @@ export default function Connexion() {
       setLoading(false);
     }
   };
-
+  
   return (
     <>
       <NavBar />
