@@ -35,15 +35,16 @@ export default function Profile() {
 
     <div className="Profile-main">
       <div className="Profile-image">
-        <h3 style={{textAlign: "center"}}>Votre photo de profil</h3>
         <div style={{display : "flex",flexDirection : "column"}}>
         <img src={AvatarUser} className="avatarUser" alt="image-profile" srcset="" />
-        <h3>nom et prenom</h3>
+        <h3>{userData.lastName}</h3>
 
         </div>
         <form style={{display : "flex",flexDirection : "column", gap : "30px"}}  method="post">
-          <input type="file" name="profile-img"   />
-          <input type="file" name="profile-img"   />
+        <div class="image-input">
+	<input type="file" accept="image/*" id="imageInput"/>
+	<label for="imageInput" class="image-button"><i class="far fa-image"></i> Changer de photo</label>
+</div>
         </form>
       </div>
 

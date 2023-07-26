@@ -104,3 +104,71 @@ input[type="tel"] {
     background: #99DEF0;
     cursor: pointer;
 }
+
+
+/* Image input */
+
+.image-input {
+    text-align: center;
+}
+
+.image-input input {
+    display: none;
+}
+
+.image-input label {
+    display: inline-flex;
+    width: 196px;
+    height: 42px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 9px;
+    border: 1px solid #99DEF0;
+    background: #D2F5FE;
+    cursor: pointer;
+}
+
+.image-input label i {
+    font-size: 125%;
+    margin-right: 0.3rem;
+}
+
+.image-input label:hover i {
+    animation: shake 0.35s;
+}
+
+.image-input img {
+    max-width: 175px;
+    display: none;
+}
+
+.image-input span {
+    display: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/* Animation keyframes */
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(10deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* Other styles */
