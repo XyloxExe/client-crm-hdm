@@ -13,16 +13,36 @@ export default function Connexion() {
   const navigate = useNavigate();
 
 
+  
+  const getUserId = async (token) => {
+    const url = "https://localhost:8000/api/user/me";
+
+    try {
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      });
+      console.log("UserInfo : ", response);
+
+      const userId = response.data.id;
+      console.log("User ID:", userId);
+      navigate(`/profil/${userId}`);
+    } catch (error) {
+      console.log("Error fetching user ID:", error);
+    }
+  };
+
+
 
   const handleSubmit = async (e) => { 
     e.preventDefault();
-    // Reset error state and set loading to true during the request
     setErrors("");
     setLoading(true);
 
     if (username !== "" && password !== "") {
       const data = { username: username, password: password };
-      const url = "https://localhost:8000/api/users";
+      const url = "https://localhost:8000/api/login";
 
       try {
         console.log("Sending data to the server:", data);
@@ -35,8 +55,9 @@ export default function Connexion() {
 
         if (response.status === 200 || response.status === 201) {
           setLoading(false);
-          // Utilisation de response.data.id pour accéder à l'ID dans la réponse
-          navigate(`/profil/${response.data.id}`);
+          const token = response.data.token; 
+          localStorage.setItem("authToken", token);
+          getUserId(token); // Appeler la fonction pour récupérer l'ID de l'utilisateur après une connexion réussie
         } else {
           setErrors("Erreur lors de l'enregistrement des données");
           setLoading(false);
@@ -47,7 +68,6 @@ export default function Connexion() {
         setLoading(false);
       }
     } else {
-      // Gérer le cas où l'email ou le mot de passe est vide
       setErrors("Veuillez saisir l'email et le mot de passe.");
       setLoading(false);
     }
@@ -75,6 +95,7 @@ export default function Connexion() {
           <button type="submit" disabled={loading}>
             {loading ? "Connexion en cours..." : "Connexion"}
           </button>
+         
           {error && <p style={{ color: "red" }}>{error}</p>}
         </form>
       </div>
