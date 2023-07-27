@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: column;
     flex: 2;
-    gap: 20px;
+    gap: 30px;
 }
 
 .sidebar li span:nth-child(1) {
@@ -57,6 +57,85 @@
 
 .container .content {
     padding-left: 75px;
+}
+
+.userinfoNavbar {
+    width: 100%;
+    height: 61px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.borderAvataruser {
+    display: flex;
+    width: 61px;
+    height: 61px;
+    fill: rgba(255, 243, 243, 0.00);
+    align-items: center;
+    margin-left: 10px;
+    position: relative;
+}
+
+
+/* CSS */
+
+.DashboardNavLink>li {
+    padding: 0;
+    background: #99def0;
+    margin-top: 9%;
+    margin-bottom: 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    flex-direction: row;
+}
+
+.navbarIcon {
+    width: 21.224px;
+    height: 20px;
+    color: black;
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* To target the <Link> element inside the <li> */
+
+.DashboardNavLink>li>a {
+    color: #222;
+    font-family: "DM Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0.75px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* If you want to remove underline */
+    width: auto;
+    height: auto;
+    font-size: 16px;
+}
+
+
+/* To target the <span> element inside the <li> */
+
+.DashboardNavLink>li>span {
+    /* Add your styles for the <span> element here */
+    width: auto;
+    height: auto;
+}
+
+.AvatarUser {
+    width: 38px;
+    height: 40px;
+    position: absolute;
+    right: 11px;
 }
 
 @media screen and (max-width: 575px) {
