@@ -91,13 +91,15 @@
     padding: 20px;
 }
 
-.inscription-form>input {
+.inscription-form>input[type="text"],
+.inscription-form>input[type="password"] {
     width: 90%;
     padding: 15px;
     margin: 12px;
     box-sizing: border-box;
     border-radius: 10px;
     border: 0.6px solid #130F26;
+    display: flex;
 }
 
 .inscription-form>input[type="submit"] {
@@ -207,23 +209,6 @@ progress[value="3"]::-webkit-progress-value {
 
 progress[value="4"]::-webkit-progress-value {
     background-color: #1b98e0;
-}
-
-
-/* Media query for big screens */
-
-@media screen and (min-width: 1900px) {
-    .Inscription {
-        font-size: 2em;
-    }
-    .inscription-title>.avatar1 {
-        width: 10%;
-        max-width: 132px;
-    }
-    .inscription-title>.avatar2 {
-        width: 15%;
-        max-width: 233px;
-    }
 }
 
 @media screen and (max-width: 575px) {

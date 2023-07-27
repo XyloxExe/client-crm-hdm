@@ -158,9 +158,9 @@
     margin: 10px 0;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"] {
+.Profile>input[type="text"],
+.Profile>input[type="email"],
+.Profile>input[type="tel"] {
     display: flex;
     width: 511px;
     height: 20px;
