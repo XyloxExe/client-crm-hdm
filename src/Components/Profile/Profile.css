@@ -1,5 +1,4 @@
 .Profile {
-    border: 1px dotted black;
     margin: 1% auto;
     width: auto;
     max-width: 80%;
@@ -28,6 +27,24 @@
     font-weight: 400;
     line-height: normal;
     padding-left: 20px;
+}
+
+.profileEditModeToggle {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.successMessage {
+    color: green;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 .profileEditButton {

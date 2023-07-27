@@ -12,8 +12,24 @@ export default function Profile() {
   const [firstname, setfirstname] = useState("");
   const [username, setUsername] = useState("");
   const [telephone, setTelephone] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
   const [email, setEmail] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
+  const [phoneNumberError, setPhoneNumberError] = useState("");
+
+
+
+  const validatePhoneNumber = (inputPhoneNumber) => {
+    const phoneNumberPattern = /^0[67]\d{8}$/; // French mobile number format (starts with 06 or 07, followed by 8 digits)
+    if (!phoneNumberPattern.test(inputPhoneNumber)) {
+      setPhoneNumberError("Le format du numéro de téléphone est incorrect.");
+      return false;
+    }
+    setPhoneNumberError("");
+    return true;
+  };
+
+
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -36,6 +52,10 @@ export default function Profile() {
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
+    const isPhoneNumberValid = validatePhoneNumber(telephone);
+    if (!isPhoneNumberValid) {
+      return; // If phone number format is invalid, don't proceed with updating the profile
+    }
     try {
       const url = `https://localhost:8000/api/users/${id}`;
       const data = {
@@ -48,6 +68,7 @@ export default function Profile() {
       const response = await axios.put(url, data);
       setUserData((prevData) => ({ ...prevData, ...response.data }));
       setIsEditMode(false);
+      setIsSuccess(true);
     } catch (error) {
       console.error("Erreur lors de la mise à jour des données utilisateur :", error);
     }
@@ -121,11 +142,7 @@ export default function Profile() {
                   onChange={(e) => setEmail(e.target.value)}
                 />
               
-              {isEditMode && (
-                <button className="profileEmailbuttonEdit" onClick={handleProfileUpdate} type="button">
-                  Sauvegarder
-                </button>
-              )}
+            
             </div>
             
              
@@ -136,8 +153,10 @@ export default function Profile() {
                 value={telephone}
                 onChange={(e) => setTelephone(e.target.value)}
                 placeholder="06********"
+                
               />
-            
+            {phoneNumberError && <p className="errorMessage">{phoneNumberError}</p>}
+
             
             <div className="profileEditModeToggle">
               <button
@@ -149,7 +168,15 @@ export default function Profile() {
               >
                 {isEditMode ? "Annuler" : "Modifier"}
               </button>
+              {isEditMode && (
+                <button className="profileEmailbuttonEdit" onClick={handleProfileUpdate} type="button">
+                  Sauvegarder
+                </button>
+              )}
+                            {isSuccess && <p className="successMessage">Mise à jour du profil réussie!</p>}
+
             </div>
+            
           </form>
         </div>
       </div>

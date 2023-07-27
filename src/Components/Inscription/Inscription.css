@@ -158,6 +158,58 @@
 }
 
 
+/* CSS pour l'indicateur de force du mot de passe */
+
+.password-strength {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+}
+
+.password-strength p {
+    margin: 5px 0;
+}
+
+
+/* Barre de progression */
+
+progress {
+    width: 50%;
+    height: 8px;
+    border: none;
+    appearance: none;
+    border-radius: 4px;
+}
+
+
+/* Couleur de la barre de progression en fonction de la force du mot de passe */
+
+progress[value] {
+    background-color: #f0f0f0;
+}
+
+
+/* Couleur de la barre de progression pour les différentes forces */
+
+progress[value="1"]::-webkit-progress-value {
+    background-color: #ff6b6b;
+}
+
+progress[value="2"]::-webkit-progress-value {
+    background-color: #ffd166;
+}
+
+progress[value="3"]::-webkit-progress-value {
+    background-color: #06d6a0;
+}
+
+progress[value="4"]::-webkit-progress-value {
+    background-color: #1b98e0;
+}
+
+
 /* Media query for big screens */
 
 @media screen and (min-width: 1900px) {

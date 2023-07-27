@@ -10,6 +10,7 @@ export default function Connexion() {
   const [password, setPassword] = useState("");
   const [error, setErrors] = useState("");
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
 
@@ -20,6 +21,7 @@ export default function Connexion() {
     if (isAuth && userId) {
       navigate(`/profile/${userId}`);
     }
+  
   }, [navigate]);
 
   
@@ -67,6 +69,7 @@ export default function Connexion() {
           setLoading(false);
           const token = response.data.token; 
           localStorage.setItem("authToken", token);
+       
           getUserId(token); // Appeler la fonction pour récupérer l'ID de l'utilisateur après une connexion réussie
         } else {
           setErrors("Erreur lors de l'enregistrement des données");
@@ -87,6 +90,9 @@ export default function Connexion() {
     <>
       <NavBar />
       <div className="Connexion">
+
+    <h1>Connexion </h1>
+
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -102,9 +108,11 @@ export default function Connexion() {
             placeholder="Mot de passe"
             required
           />
+
           <button type="submit" disabled={loading}>
             {loading ? "Connexion en cours..." : "Connexion"}
           </button>
+
          
           {error && <p style={{ color: "red" }}>{error}</p>}
         </form>

@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import zxcvbn from "zxcvbn";
 
 import axios from "axios";
 import NavBar from "../Navbar/Navbar";
@@ -21,7 +22,17 @@ export default function Inscription() {
   const [telephone, setTelephone] = useState("");
   const [emailError, setEmailError] = useState("");
   const [errors, setErrors] = useState([]);
+  const [passwordStrength, setPasswordStrength] = useState(0);
+
   const navigate = useNavigate();
+
+
+  const checkPasswordStrength = (password) => {
+    const result = zxcvbn(password);
+    setPasswordStrength(result.score);
+  };
+  
+
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
@@ -68,8 +79,11 @@ export default function Inscription() {
   };
 
   const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    checkPasswordStrength(newPassword);
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -180,6 +194,26 @@ export default function Inscription() {
             onChange={handlePasswordChange}
             className="inscription-input"
           />
+{password && (
+  <div className="password-strength">
+    <p>
+      Force du mot de passe :{" "}
+      {passwordStrength === 0
+        ? "Très faible"
+        : passwordStrength === 1
+        ? "Faible"
+        : passwordStrength === 2
+        ? "Moyen"
+        : passwordStrength === 3
+        ? "Fort"
+        : "Très fort"}
+    </p>
+    <progress
+      value={passwordStrength}
+      max="4"
+    />
+  </div>
+)}
 
           <input
             type="submit"
