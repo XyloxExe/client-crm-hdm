@@ -1,16 +1,16 @@
 .Profile {
-    border: 1px solid black;
+    border: 1px dotted black;
     margin: 1% auto;
-    width: 80%;
+    width: auto;
     max-width: 80%;
     height: auto;
     padding: 0;
-    float: right;
     margin-right: 20px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .Profile-header {
-    border: 1px solid black;
+    border: 1px dotted black;
     width: 100%;
     height: 100px;
     display: flex;
@@ -33,14 +33,16 @@
 .profileEditButton {
     display: inline-flex;
     width: 144px;
-    padding: 5px 11px;
+    padding: 10px;
+    border-radius: 8px;
     justify-content: center;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    border: 1px solid #000;
     background: #99DEF0;
+    border: none;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .Profile-header>p {
@@ -57,7 +59,6 @@
 }
 
 .Profile-main {
-    border: 1px solid red;
     width: 100%;
     height: auto;
     display: flex;
@@ -65,7 +66,7 @@
 }
 
 .Profile-image {
-    border: 1px solid green;
+    border: 1px dotted black;
     width: 100%;
     height: 15rem;
     display: flex;
@@ -77,6 +78,8 @@
 .avatarUser {
     width: 110px;
     height: 110px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    border-radius: 100px;
 }
 
 .form-profile {
@@ -101,6 +104,12 @@ input[type="tel"] {
     flex-wrap: wrap;
 }
 
+.form-profile>input[type="text"],
+input[type="email"],
+input[type="tel"] :focus {
+    outline: none;
+}
+
 .profileEmailEdit {
     display: flex;
     flex-direction: row;
@@ -115,8 +124,10 @@ input[type="tel"] {
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    border: 1px solid #000;
-    background: #99DEF0;
+    color: #fff;
+    border: none;
+    background: #5cb85c;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     cursor: pointer;
 }
 
@@ -142,6 +153,7 @@ input[type="tel"] {
     border: 1px solid #99DEF0;
     background: #D2F5FE;
     cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 .image-input label i {

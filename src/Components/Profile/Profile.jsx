@@ -9,6 +9,7 @@ export default function Profile() {
   const { id } = useParams();
   const [userData, setUserData] = useState({});
   const [lastName, setLastName] = useState("");
+  const [firstname, setfirstname] = useState("");
   const [username, setUsername] = useState("");
   const [telephone, setTelephone] = useState("");
   const [email, setEmail] = useState("");
@@ -24,6 +25,7 @@ export default function Profile() {
         setLastName(response.data.lastName);
         setUsername(response.data.username);
         setTelephone(response.data.telephone);
+        setfirstname(response.data.firstName)
       } catch (error) {
         console.error("Erreur lors de la récupération des données utilisateur :", error);
       }
@@ -40,6 +42,7 @@ export default function Profile() {
         username: username,
         mail: email,
         lastName: lastName,
+        firstName : firstname,
         telephone: telephone
       };
       const response = await axios.put(url, data);
@@ -63,7 +66,8 @@ export default function Profile() {
           <div className="Profile-image">
             <div style={{ display: "flex", flexDirection: "column" }}>
               <img src={userData.avatar || AvatarUser} className="avatarUser" alt="image-profile" />
-              <h3>{userData.lastName}</h3>
+              <br />
+              <h3>{userData.lastName} { userData.firstName}</h3>
             </div>
             <div className="image-input">
               <input type="file" accept="image/*" id="imageInput" />
@@ -83,6 +87,15 @@ export default function Profile() {
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 placeholder="Prénom"
+              />
+
+<input
+                disabled={!isEditMode}
+                type="text"
+                name="nom"
+                value={firstname}
+                onChange={(e) => setfirstname(e.target.value)}
+                placeholder="nom"
               />
             
             
