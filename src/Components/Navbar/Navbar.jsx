@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { slide as Menu } from 'react-burger-menu';
-import AvatarUser from "../images/avatar7.png";
+import AvatarUser from "../images/avatar3.png";
 import avatarBorder from "../images/avatarBorder.png"
 import { BiSolidDashboard } from 'react-icons/bi';
 import { FaUserAlt } from 'react-icons/fa';

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import AvatarUser from "../images/avatar7.png";
+import AvatarUser from "../images/avatar3.png";
 import "./Profile.css";
 import NavBar from "../Navbar/Navbar";
+import { LiaTrashAlt } from "react-icons/lia";
+
 
 export default function Profile() {
   const { id } = useParams();
@@ -76,11 +78,12 @@ export default function Profile() {
 
   return (
     <>
+    <div className="Container">
       <NavBar />
       <div className="Profile">
         <div className="Profile-header">
           <h2>Mon Profil</h2>
-          <p>Aide</p>
+          
         </div>
 
         <div className="Profile-main">
@@ -95,90 +98,93 @@ export default function Profile() {
               <label htmlFor="imageInput" className="image-button">
                 <i className="far fa-image"></i> Changer de photo
               </label>
+               <button id="DeleteBtnPhotoProfile"> <LiaTrashAlt/> Supprimer</button>
             </div>
           </div>
 
           <form className="form-profile">
-            
-            
-              <input
-                disabled={!isEditMode}
-                type="text"
-                name="prenom"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                placeholder="Prénom"
-              />
+  <div className="form-field">
+    <label htmlFor="prenom">Prénom:</label>
+    <input
+      disabled={!isEditMode}
+      type="text"
+      name="prenom"
+      value={lastName}
+      onChange={(e) => setLastName(e.target.value)}
+      placeholder="Prénom"
+    />
+  </div>
 
-<input
-                disabled={!isEditMode}
-                type="text"
-                name="nom"
-                value={firstname}
-                onChange={(e) => setfirstname(e.target.value)}
-                placeholder="nom"
-              />
-            
-            
-         
-              <input
-                disabled={!isEditMode}
-                type="text"
-                name="Nom"
-                placeholder="Nom"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-      
-            <div className="profileEmailEdit">
-              
-               
-                <input
-                  disabled={!isEditMode}
-                  type="email"
-                  name="mail"
-                  placeholder="Enter your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              
-            
-            </div>
-            
-             
-              <input
-                disabled={!isEditMode}
-                type="tel"
-                name="numero"
-                value={telephone}
-                onChange={(e) => setTelephone(e.target.value)}
-                placeholder="06********"
-                
-              />
-            {phoneNumberError && <p className="errorMessage">{phoneNumberError}</p>}
+  <div className="form-field">
+    <label htmlFor="nom">Nom:</label>
+    <input
+      disabled={!isEditMode}
+      type="text"
+      name="nom"
+      value={firstname}
+      onChange={(e) => setfirstname(e.target.value)}
+      placeholder="Nom"
+    />
+  </div>
 
-            
-            <div className="profileEditModeToggle">
-              <button
-                className="profileEditButton"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setIsEditMode(!isEditMode);
-                }}
-              >
-                {isEditMode ? "Annuler" : "Modifier"}
-              </button>
-              {isEditMode && (
-                <button className="profileEmailbuttonEdit" onClick={handleProfileUpdate} type="button">
-                  Sauvegarder
-                </button>
-              )}
-                            {isSuccess && <p className="successMessage">Mise à jour du profil réussie!</p>}
+  <div className="form-field">
+    <label htmlFor="Nom">Username:</label>
+    <input
+      disabled={!isEditMode}
+      type="text"
+      name="Nom"
+      placeholder="Username"
+      value={username}
+      onChange={(e) => setUsername(e.target.value)}
+    />
+  </div>
 
-            </div>
-            
-          </form>
+  <div className="form-field">
+    <label htmlFor="mail">Email:</label>
+    <input
+      disabled={!isEditMode}
+      type="email"
+      name="mail"
+      placeholder="Enter your email address"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+    />
+  </div>
+
+  <div className="form-field">
+    <label htmlFor="numero">Numéro de téléphone:</label>
+    <input
+      disabled={!isEditMode}
+      type="tel"
+      name="numero"
+      value={telephone}
+      onChange={(e) => setTelephone(e.target.value)}
+      placeholder="06********"
+    />
+    {phoneNumberError && <p className="errorMessage">{phoneNumberError}</p>}
+  </div>
+
+  <div className="profileEditModeToggle">
+    <button
+      className="profileEditButton"
+      onClick={(e) => {
+        e.preventDefault();
+        setIsEditMode(!isEditMode);
+      }}
+    >
+      {isEditMode ? "Annuler" : "Modifier"}
+    </button>
+    {isEditMode && (
+      <button className="profileEmailbuttonEdit" onClick={handleProfileUpdate} type="button">
+        Sauvegarder
+      </button>
+    )}
+    {isSuccess && <p className="successMessage">Mise à jour du profil réussie!</p>}
+  </div>
+</form>
+
         </div>
+      </div>
       </div>
     </>
   );
