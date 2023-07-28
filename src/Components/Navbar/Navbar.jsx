@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { slide as Menu } from 'react-burger-menu';
-import AvatarUser from "../images/avatar3.png";
+import AvatarUser from "../images/avatar8.jpg";
 import avatarBorder from "../images/avatarBorder.png"
 import { BiSolidDashboard } from 'react-icons/bi';
 import { FaUserAlt } from 'react-icons/fa';
@@ -52,8 +52,8 @@ export default function NavBar() {
                  <div className="userinfoNavbar">
                   <div className="borderImgUserNav">
                     <div className="borderAvataruser">
-                    <img src={avatarBorder} alt="" srcset="" />
-                  <img src={AvatarUser} className="AvatarUser" alt="" srcset="" />
+                    <img src={avatarBorder } alt="" srcset="" />
+                  <img src={userdata.photoFilename ?  `https://127.0.0.1:8000/public/uploads/${userdata.photoFilename}` : AvatarUser} className="AvatarUser" alt="" srcset="" />
                     </div>
                   </div>
                   <p>{userdata.firstName} {userdata.lastName}</p>

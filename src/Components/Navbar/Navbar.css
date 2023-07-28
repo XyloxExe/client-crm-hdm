@@ -131,8 +131,11 @@
 }
 
 .AvatarUser {
+    z-index: -1;
     width: 38px;
+    max-width: 38px;
     height: 40px;
+    max-height: 40px;
     position: absolute;
     right: 11px;
 }

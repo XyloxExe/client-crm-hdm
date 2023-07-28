@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import AvatarUser from "../images/avatar3.png";
+import AvatarUser from "../images/avatar8.jpg";
 import "./Profile.css";
 import NavBar from "../Navbar/Navbar";
 import { LiaTrashAlt } from "react-icons/lia";
