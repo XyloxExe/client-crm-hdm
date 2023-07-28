@@ -18,6 +18,7 @@ export default function Profile() {
   const [email, setEmail] = useState("");
   const [isEditMode, setIsEditMode] = useState(false);
   const [phoneNumberError, setPhoneNumberError] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
 
 
 
@@ -32,10 +33,18 @@ export default function Profile() {
   };
 
 
+  const handleImageUpload = (event) => {
+    const selectedFile = event.target.files[0];
+    setProfileImage(selectedFile);
+  };
+  
+  
+
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        console.log(profileImage);
         const url = `https://localhost:8000/api/user/${id}`;
         const response = await axios.get(url);
         setUserData(response.data);
@@ -44,6 +53,7 @@ export default function Profile() {
         setUsername(response.data.username);
         setTelephone(response.data.telephone);
         setfirstname(response.data.firstName)
+        setProfileImage(response.data.photo_filename)
       } catch (error) {
         console.error("Erreur lors de la récupération des données utilisateur :", error);
       }
@@ -58,14 +68,15 @@ export default function Profile() {
     if (!isPhoneNumberValid) {
       return; // If phone number format is invalid, don't proceed with updating the profile
     }
+  
     try {
       const url = `https://localhost:8000/api/users/${id}`;
       const data = {
         username: username,
         mail: email,
         lastName: lastName,
-        firstName : firstname,
-        telephone: telephone
+        firstName: firstname,
+        telephone: telephone,
       };
       const response = await axios.put(url, data);
       setUserData((prevData) => ({ ...prevData, ...response.data }));
@@ -74,7 +85,27 @@ export default function Profile() {
     } catch (error) {
       console.error("Erreur lors de la mise à jour des données utilisateur :", error);
     }
+  
+    if (profileImage) {
+      try {
+        console.log(profileImage);
+        const photoUploadUrl = `https://localhost:8000/api/users/${id}/update_photo`;
+        const formData = new FormData();
+        formData.append("photoFilename", profileImage);
+  
+        const photoResponse = await axios.post(photoUploadUrl, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+  
+        console.log("Photo upload response:", photoResponse);
+      } catch (error) {
+        console.error("Erreur lors de la mise à jour de la photo de profil :", error);
+      }
+    }
   };
+  
 
   return (
     <>
@@ -89,17 +120,25 @@ export default function Profile() {
         <div className="Profile-main">
           <div className="Profile-image">
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <img src={userData.avatar || AvatarUser} className="avatarUser" alt="image-profile" />
+            <img
+            src={profileImage ? URL.createObjectURL(profileImage) : userData.photoFilename || AvatarUser}
+            className="avatarUser"
+            alt="image-profile"
+          />
               <br />
               <h3>{userData.lastName} { userData.firstName}</h3>
             </div>
+            <form method="POST" className="updateImage">
             <div className="image-input">
-              <input type="file" accept="image/*" id="imageInput" />
-              <label htmlFor="imageInput" className="image-button">
+            <input type="file"  id="imageInput" onChange={handleImageUpload} />
+            <label htmlFor="imageInput" className="image-button">
                 <i className="far fa-image"></i> Changer de photo
               </label>
+              
                <button id="DeleteBtnPhotoProfile"> <LiaTrashAlt/> Supprimer</button>
             </div>
+            </form>
+
           </div>
 
           <form className="form-profile">
