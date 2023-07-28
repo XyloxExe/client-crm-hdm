@@ -53,7 +53,7 @@ export default function Profile() {
         setUsername(response.data.username);
         setTelephone(response.data.telephone);
         setfirstname(response.data.firstName)
-        setProfileImage(response.data.photo_filename)
+        setProfileImage(response.data.photoFilename)
       } catch (error) {
         console.error("Erreur lors de la récupération des données utilisateur :", error);
       }
@@ -121,7 +121,7 @@ export default function Profile() {
           <div className="Profile-image">
             <div style={{ display: "flex", flexDirection: "column" }}>
             <img
-            src={profileImage ? URL.createObjectURL(profileImage) : userData.photoFilename || AvatarUser}
+            src={profileImage ?  `https://127.0.0.1:8000/public/uploads/${userData.photoFilename}` : AvatarUser}
             className="avatarUser"
             alt="image-profile"
           />
