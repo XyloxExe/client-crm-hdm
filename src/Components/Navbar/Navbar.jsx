@@ -34,37 +34,44 @@ export default function NavBar() {
   
     return(
       <>
+      
+
+     
         <div className="container">
                 
-                <ul className="sidebar">
+                <ul  className={!token && !userId ? "sidebar" : "sidebarNormal "}>
                 <li><span>HDMHUB</span></li>
 
                 {
                 !token && !userId ? (
                   <>
-                  <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/"><i className="fa fa-dashboard"></i>Acceuil</Link></li>
-                  <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/connexion"><i className="fa fa-dashboard"></i>connexion</Link></li>
-                  <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/inscription"><i className="fa fa-dashboard"></i>inscription</Link></li>
+                  <li><span></span><Link style={{color : "#fff"}} to="/">Acceuil</Link></li>
+                  <li><span></span><Link style={{color : "#fff"}} to="/connexion">connexion</Link></li>
+                  <li><span></span><Link style={{color : "#fff"}} to="/inscription">inscription</Link></li>
                   </>
                   ) 
                  : 
 
                  <>
-                 <div className="userinfoNavbar">
-                  <div className="borderImgUserNav">
-                    <div className="borderAvataruser">
-                    <img src={avatarBorder } alt="" srcset="" />
+                 <div  className="userinfoNavbar">
+                  <div  className="borderImgUserNav">
+                    <div  className="borderAvataruser">
+                    <img src={avatarBorder }  alt="" srcset="" />
                   <img src={userdata.photoFilename ?  `https://127.0.0.1:8000/public/uploads/${userdata.photoFilename}` : AvatarUser} className="AvatarUser" alt="" srcset="" />
                     </div>
                   </div>
                   <p>{userdata.firstName} {userdata.lastName}</p>
                  </div>
+                  
+                
+                 
                  <div className="DashboardNavLink">
+                 
 
-                  <li> <Link  to={`/profile/${userId}`}><i ><BiSolidDashboard className="navbarIcon"/></i>Dashboard</Link></li>
+                  <li> <Link  to={`/Dashboard/${userId}`}>Dashboard</Link></li>
                  </div>
-                 <li> <span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to={`/profile/${userId}`}><i className="fa fa-dashboard"><FiUser/></i>Mon Porfile</Link></li>
-                 <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/logout"><i className="fa fa-dashboard"></i>deconnexion</Link></li>
+                 <li> <span></span><Link style={{color : "#fff"}} to={`/profile/${userId}`}>Mon Porfile</Link></li>
+                 <li><span></span><Link style={{color : "#fff"}} to="/logout">deconnexion</Link></li>
                  </>
 
 
@@ -78,6 +85,7 @@ export default function NavBar() {
                    
                 </div>
         </div>
+        
       </>
       
       );

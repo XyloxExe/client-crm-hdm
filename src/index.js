@@ -10,6 +10,7 @@ import Inscription from './Components/Inscription/Inscription.jsx';
 import NotFound from './Components/NotFound/NotFound.jsx';
 import Profile from './Components/Profile/Profile.jsx' ; // Fixed typo in component name
 import Logout from './Components/Logout/Logout.jsx';
+import Dashboard from './Components/DashboardUser/Dashboard.jsx';
 ReactDOM.render(
   <React.StrictMode>
     <Router>
@@ -22,6 +23,7 @@ ReactDOM.render(
     
         <Route element={<PrivateRoute />}>
       <Route path="/profile/:id" element={<Profile />} />
+      <Route path="/Dashboard/:id" element={<Dashboard />} />
       <Route path="/Logout" element={<Logout />} />
       </Route>      
 </Routes>
