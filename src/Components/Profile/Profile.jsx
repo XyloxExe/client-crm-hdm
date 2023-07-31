@@ -41,6 +41,33 @@ export default function Profile() {
   
 
 
+
+  const handlePhotoDelete = async (e) => {
+    e.preventDefault()
+    try {
+      const deletePhotoUrl = `https://localhost:8000/api/users/${id}/remove_photo`;
+      const response = await axios.post(deletePhotoUrl);
+      if (response.status === 200) {
+        setProfileImage(null);
+        if (userData.photoFilename && userData.photoFilename !== "") {
+
+          alert("votre votre a bien été supprimé")
+        }
+      }
+    } catch (error) {
+      console.error("Erreur lors de la suppression de la photo de profil :", error);
+    }
+  };
+  
+
+  
+
+
+
+
+
+
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
@@ -66,7 +93,7 @@ export default function Profile() {
     e.preventDefault();
     const isPhoneNumberValid = validatePhoneNumber(telephone);
     if (!isPhoneNumberValid) {
-      return; // If phone number format is invalid, don't proceed with updating the profile
+      return; 
     }
   
     try {
@@ -104,6 +131,12 @@ export default function Profile() {
         console.error("Erreur lors de la mise à jour de la photo de profil :", error);
       }
     }
+    else {
+      if (userData.photoFilename && userData.photoFilename !== "") {
+        handlePhotoDelete();
+      }
+    }
+
   };
   
 
@@ -128,17 +161,19 @@ export default function Profile() {
               <br />
               <h3>{userData.lastName} { userData.firstName}</h3>
             </div>
-            <form method="POST" className="updateImage">
-            <div className="image-input">
-            <input type="file"  id="imageInput" onChange={handleImageUpload} />
-            <label htmlFor="imageInput" className="image-button">
-                <i className="far fa-image"></i> Changer de photo
-              </label>
-              
-               <button id="DeleteBtnPhotoProfile"> <LiaTrashAlt/> Supprimer</button>
-            </div>
-            </form>
-
+            <form className="updateImage">
+        <div className="image-input">
+          <input type="file" id="imageInput" onChange={handleImageUpload} />
+          <label htmlFor="imageInput" className="image-button">
+            <i className="far fa-image"></i> Changer de photo
+          </label>
+          <button id="DeleteBtnPhotoProfile" onClick={handlePhotoDelete}>
+            <LiaTrashAlt /> Supprimer
+          </button>
+        </div>
+        
+      </form>
+    
           </div>
 
           <form className="form-profile">

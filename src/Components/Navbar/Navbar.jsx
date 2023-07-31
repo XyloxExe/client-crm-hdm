@@ -6,6 +6,7 @@ import AvatarUser from "../images/avatar8.jpg";
 import avatarBorder from "../images/avatarBorder.png"
 import { BiSolidDashboard } from 'react-icons/bi';
 import { FaUserAlt } from 'react-icons/fa';
+import { FiUser } from 'react-icons/fi';
 
 
 import axios from "axios";
@@ -60,9 +61,9 @@ export default function NavBar() {
                  </div>
                  <div className="DashboardNavLink">
 
-                 <li><BiSolidDashboard className="navbarIcon"/> <Link  to={`/profile/${userId}`}><i ></i>Dashboard</Link></li>
+                  <li> <Link  to={`/profile/${userId}`}><i ><BiSolidDashboard className="navbarIcon"/></i>Dashboard</Link></li>
                  </div>
-                 <li> <span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to={`/profile/${userId}`}><i className="fa fa-dashboard"></i>Mon Porfile</Link></li>
+                 <li> <span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to={`/profile/${userId}`}><i className="fa fa-dashboard"><FiUser/></i>Mon Porfile</Link></li>
                  <li><span><i className="fa fa-dashboard"></i></span><Link style={{color : "#fff"}} to="/logout"><i className="fa fa-dashboard"></i>deconnexion</Link></li>
                  </>
 
