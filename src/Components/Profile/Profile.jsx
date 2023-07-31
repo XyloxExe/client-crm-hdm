@@ -19,6 +19,7 @@ export default function Profile() {
   const [isEditMode, setIsEditMode] = useState(false);
   const [phoneNumberError, setPhoneNumberError] = useState("");
   const [profileImage, setProfileImage] = useState(null);
+  const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
 
 
 
@@ -36,7 +37,19 @@ export default function Profile() {
   const handleImageUpload = (event) => {
     const selectedFile = event.target.files[0];
     setProfileImage(selectedFile);
+  
+    // Image preview
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreviewUrl(reader.result);
+    };
+    if (selectedFile) {
+      reader.readAsDataURL(selectedFile);
+    } else {
+      setImagePreviewUrl(null);
+    }
   };
+  
   
   
 
@@ -151,30 +164,29 @@ export default function Profile() {
         </div>
 
         <div className="Profile-main">
-          <div className="Profile-image">
-            <div style={{ display: "flex", flexDirection: "column" }}>
-            <img
-            src={profileImage ?  `https://127.0.0.1:8000/public/uploads/${userData.photoFilename}` : AvatarUser}
-            className="avatarUser"
-            alt="image-profile"
-          />
-              <br />
-              <h3>{userData.lastName} { userData.firstName}</h3>
-            </div>
-            <form className="updateImage">
-        <div className="image-input">
-          <input type="file" id="imageInput" onChange={handleImageUpload} />
-          <label htmlFor="imageInput" className="image-button">
-            <i className="far fa-image"></i> Changer de photo
-          </label>
-          <button id="DeleteBtnPhotoProfile" onClick={handlePhotoDelete}>
-            <LiaTrashAlt /> Supprimer
-          </button>
-        </div>
-        
-      </form>
-    
-          </div>
+        <div className="Profile-image">
+  <div style={{ display: "flex", flexDirection: "column" }}>
+    <img
+      src={imagePreviewUrl ? imagePreviewUrl : (profileImage ? `https://127.0.0.1:8000/public/uploads/${userData.photoFilename}` : AvatarUser)}
+      className="avatarUser"
+      alt="image-profile"
+    />
+    <br />
+    <h3>{userData.lastName} {userData.firstName}</h3>
+  </div>
+  <form className="updateImage">
+    <div className="image-input">
+      <input type="file" id="imageInput" onChange={handleImageUpload} />
+      <label htmlFor="imageInput" className="image-button">
+        <i className="far fa-image"></i> Changer de photo
+      </label>
+      <button id="DeleteBtnPhotoProfile" onClick={handlePhotoDelete}>
+        <LiaTrashAlt /> Supprimer
+      </button>
+    </div>
+  </form>
+</div>
+
 
           <form className="form-profile">
   <div className="form-field">
