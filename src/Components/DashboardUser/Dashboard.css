@@ -74,7 +74,7 @@
     height: 100%;
     padding: 10px;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 10px;
     overflow: auto;
 }
@@ -106,4 +106,33 @@
     width: 220px;
     height: 351px;
     padding: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .DashUserHeader {
+        flex-direction: column;
+        height: auto;
+    }
+    .DashUserHeaderInfo {
+        width: 100%;
+        margin-left: 0;
+    }
+    .DashUserHeaderSetting {
+        position: static;
+        width: 100%;
+        margin-right: 0;
+    }
+    .DashUserHeaderInfoName>img {
+        max-width: 40px;
+        max-height: 40px;
+    }
+    .DashboardMain {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    .DashUserInfoMail,
+    .DashInteractions,
+    .div {
+        width: 100%;
+        height: auto;
+    }
 }

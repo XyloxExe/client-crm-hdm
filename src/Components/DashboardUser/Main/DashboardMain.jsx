@@ -12,6 +12,10 @@ export default function DashboardMain() {
       <div className="div"></div>
       <div className="div"></div>
       <div className="div"></div>
+      <div className="div"></div>
+      <div className="div"></div>
+      <div className="div"></div>
+      
     </div>
   )
 }
